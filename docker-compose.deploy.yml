@@ -13,7 +13,8 @@ services:
     restart: always
     env_file:
       - prod.env
-
+    ports:
+      - "9000:8000"
     depends_on:
       - database
     command: 'sh /scripts/run.sh'
