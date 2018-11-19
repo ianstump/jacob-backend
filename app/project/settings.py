@@ -5,7 +5,7 @@ import ast
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 seconds_in_a_week = 7 * 24 * 60 * 60
 
-#SECRET_KEY = os.environ.get('SECRET_KEY')
+#  SECRET_KEY = os.environ.get('SECRET_KEY')
 SECRET_KEY = "vmr*6c^2kud@((fe_b8pmkl^h3)_7)wr1bu3b$xj5hym7whj8o"
 DEBUG = ast.literal_eval(os.environ.get('DJANGO_DEBUG', 'True'))
 
@@ -92,14 +92,14 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': "postgres",
-         'USER': "postgres",
-         'PASSWORD': "postgres",
-         'HOST': "database",
-         'PORT': 5432,
-     }
- }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': "postgres",
+        'USER': "postgres",
+        'PASSWORD': "postgres",
+        'HOST': "database",
+        'PORT': 5432,
+    }
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
