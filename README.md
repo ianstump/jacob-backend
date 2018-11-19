@@ -11,7 +11,7 @@
   and run development commands like `python manage.py createsuperuser` or `python manage.py migrate`.
 - Visit [http://localhost:8875/backend/admin](http://localhost:8875/backend/admin) and login
 
-### Interpreter settings
+### Interpreter settingss
 
 | Interpreter settings                                                        | Django Runserver settings                                                        | Django test settings                                                        | Django management command settings                                                        |
 |-----------------------------------------------------------------------------|----------------------------------------------------------------------------------|-----------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
