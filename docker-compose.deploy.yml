@@ -1,10 +1,21 @@
 version: '3'
 services:
+  nginx:
+    image: nginx:latest
+    restart: always
+    volumes:
+    - static-files:/static-files
+    - media-files:/media-files
+    - ./nginx:/etc/nginx/conf.d
+    ports:
+    - '80:80'
+    - '443:443'
+
   database:
     image: postgres:11.0
     restart: always
     env_file:
-      - ./config/database.env
+      - prod.env
     volumes:
       - database:/var/lib/postgresql/data
 
@@ -12,8 +23,8 @@ services:
     image: registry.gitlab.propulsion-home.ch/full-stack/batch-2018-09/personal-projects/jacob-project/backend:master
     restart: always
     env_file:
-      - ./../config/django.env
-      - ./../config/database.env
+      - prod.env
+
     depends_on:
       - database
     command: 'sh /scripts/run.sh'
