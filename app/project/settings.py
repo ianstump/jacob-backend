@@ -9,8 +9,8 @@ seconds_in_a_week = 7 * 24 * 60 * 60
 SECRET_KEY = "vmr*6c^2kud@((fe_b8pmkl^h3)_7)wr1bu3b$xj5hym7whj8o"
 DEBUG = ast.literal_eval(os.environ.get('DJANGO_DEBUG', 'True'))
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
-
+# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
+ALLOWED_HOSTS = ['*']
 
 FILE_UPLOAD_PERMISSIONS = 0o644
 
@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'easy_thumbnails',
     'rest_framework',
+    'backend.app',
 ]
 
 JWT_EXPIRATION_DELTA = datetime.timedelta(seconds=seconds_in_a_week)  # need to be set here because of reasons!
@@ -117,8 +118,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend',
-                           'project.apps.utils.auth_backends.EmailBackend']
+# AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend',
+#                            'project.apps.utils.auth_backends.EmailBackend']
 
 LANGUAGE_CODE = 'en-us'
 
