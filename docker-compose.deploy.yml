@@ -4,7 +4,7 @@ services:
     image: postgres:11.0
     restart: always
     env_file:
-      - ./config/database.env
+      - prod.env
     volumes:
       - database:/var/lib/postgresql/data
 
@@ -14,6 +14,8 @@ services:
     env_file:
       - ./../config/django.env
       - ./../config/database.env
+      - prod.env
+
     depends_on:
       - database
     command: 'sh /scripts/run.sh'

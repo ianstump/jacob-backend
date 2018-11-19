@@ -11,6 +11,7 @@ DEBUG = ast.literal_eval(os.environ.get('DJANGO_DEBUG', 'True'))
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
 
+
 FILE_UPLOAD_PERMISSIONS = 0o644
 
 CORS_ORIGIN_ALLOW_ALL = ast.literal_eval(os.environ.get('CORS_ORIGIN_ALLOW_ALL', 'True'))
