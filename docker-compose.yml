@@ -1,5 +1,17 @@
 version: '3'
 services:
+  nginx:
+      image: 'nginx:latest'
+      volumes:
+      - static-files:/static-files
+      - media-files:/media-files
+      - ./config:/etc/nginx/conf.d
+      ports:
+      - '80:80'
+      - '443:443'
+      command: /bin/bash -c "nginx -g 'daemon off;'"
+
+
   database:
     image: postgres:11.0
     restart: always
@@ -27,3 +39,5 @@ services:
 
 volumes:
   database:
+  static-files:
+  media-files:
