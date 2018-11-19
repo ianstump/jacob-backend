@@ -12,8 +12,8 @@ services:
     image: registry.gitlab.propulsion-home.ch/full-stack/batch-2018-09/personal-projects/jacob-project/backend:master
     restart: always
     env_file:
-      - ./config/django.env
-      - ./config/database.env
+      - ./../config/django.env
+      - ./../config/database.env
     depends_on:
       - database
     command: 'sh /scripts/run.sh'
