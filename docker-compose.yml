@@ -29,3 +29,9 @@ volumes:
   database:
   static-files:
   media-files:
+
+
+networks:
+  default:
+    external:
+      name: jacob
