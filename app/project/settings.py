@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'easy_thumbnails',
     'rest_framework',
-    'backend.app.project',
+    'project',
 ]
 
 JWT_EXPIRATION_DELTA = datetime.timedelta(seconds=seconds_in_a_week)  # need to be set here because of reasons!

@@ -8,6 +8,7 @@ mypatterns = [
     path('admin/', admin.site.urls),
     path('docs/', include_docs_urls(title='Jacob Rest API')),
     path('authentication/', include('project.apps.authentication.urls')),
+    path('search/', include('project.apps.search.urls')),
 
 ]
 
