@@ -39,14 +39,19 @@ INSTALLED_APPS = [
 
 JWT_EXPIRATION_DELTA = datetime.timedelta(seconds=seconds_in_a_week)  # need to be set here because of reasons!
 
-JWT_AUTH = {
-    'JWT_SECRET_KEY': SECRET_KEY,
-    'JWT_ALGORITHM': 'HS256',
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=seconds_in_a_week),
-    'JWT_ALLOW_REFRESH': True,
-    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
-    'JWT_AUTH_HEADER_PREFIX': 'Token',
-    'JWT_AUTH_COOKIE': 'jwtoken',
+# JWT_AUTH = {
+#     'JWT_SECRET_KEY': SECRET_KEY,
+#     'JWT_ALGORITHM': 'HS256',
+#     'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=seconds_in_a_week),
+#     'JWT_ALLOW_REFRESH': True,
+#     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
+#     'JWT_AUTH_HEADER_PREFIX': 'Token',
+#     'JWT_AUTH_COOKIE': 'jwtoken',
+# }
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=300),
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
 }
 
 MIDDLEWARE = [
