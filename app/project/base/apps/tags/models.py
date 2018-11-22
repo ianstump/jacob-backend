@@ -1,7 +1,4 @@
-from django.conf import settings
-from django.contrib.auth import get_user_model
 from django.db import models
-from django.db.models import EmailField
 
 
 class Document_tags(models.Model):
@@ -39,7 +36,6 @@ class Document_tags(models.Model):
 
 class Pdf_documents(models.Model):
     report = models.FileField(upload_to='reports')
-
 
 
 class Highlighted_text(models.Model):
