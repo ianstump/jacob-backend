@@ -1,3 +1,4 @@
+
 import os
 import ast
 from datetime import timedelta
@@ -35,6 +36,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'easy_thumbnails',
     'rest_framework',
+    'project',
 ]
 
 MIDDLEWARE = [
@@ -81,14 +83,14 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "postgres",
-        'USER': "postgres",
-        'PASSWORD': "postgres",
-        'HOST': "database",
-        'PORT': 5432,
-    }
-}
+         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+         'NAME': "postgres",
+         'USER': "postgres",
+         'PASSWORD': "postgres",
+         'HOST': "database",
+         'PORT': 5432,
+     }
+ }
 
 AUTH_PASSWORD_VALIDATORS = [
     {

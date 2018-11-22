@@ -3,16 +3,18 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.documentation import include_docs_urls
-from rest_framework_simplejwt.views import TokenObtainPairView
 
 mypatterns = [
     path('admin/', admin.site.urls),
     path('docs/', include_docs_urls(title='Jacob Rest API')),
-    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('authentication/', include('project.apps.authentication.urls')),
+    path('search/', include('project.apps.search.urls')),
+
 ]
 
 urlpatterns = [
     path('backend/', include(mypatterns)),
+
 ]
 
 if settings.DEBUG:
