@@ -21,41 +21,25 @@ class Document_tags(models.Model):
         verbose_name='domain_value',
         max_length=200,
     )
-    description_gbr = models.CharField(
+    description_gbr = models.TextField(
         verbose_name='description_gbr',
-        max_length=1000,
+
     )
-    description_FR = models.CharField(
-        verbose_name='description_gbr',
-        max_length=1000,
+    description_FR = models.TextField(
+        verbose_name='description_fr',
+
     )
-    pdf_documents = models.ForeignKey(
+    pdf_documents = models.ManyToManyField(
         verbose_name='pdf_documents',
-        related_name='pdf_documents',
+        related_name='document_tags',
         to='base.Pdf_documents',
         on_delete=models.CASCADE,
     )
 
 
 class Pdf_documents(models.Model):
-    file_name = models.CharField(
-        verbose_name='file_name',
-        max_length=200,
-    )
-    document_tags = models.ForeignKey(
-        verbose_name='document_tags',
-        related_name='document_tags',
-        to='base.Document_tags',
-        on_delete=models.CASCADE,
+    report = models.FileField(upload_to='reports')
 
-    )
-    highlighted_text = models.ForeignKey(
-        verbose_name='highlighted_text',
-        related_name='highlighted_text',
-        to='base.highlighted_text',
-        on_delete=models.CASCADE,
-
-    )
 
 
 class Highlighted_text(models.Model):
@@ -65,14 +49,14 @@ class Highlighted_text(models.Model):
     )
     document_tags = models.ForeignKey(
         verbose_name='document_tags',
-        related_name='document_tags',
+        related_name='highlighted_text',
         to='base.Document_tags',
         on_delete=models.CASCADE,
 
     )
     pdf_documents = models.ForeignKey(
         verbose_name='pdf_documents',
-        related_name='pdf_documents',
+        related_name='highlighted_text',
         to='base.Pdf_documents',
         on_delete=models.CASCADE
     )
