@@ -1,5 +1,5 @@
-from rest_framework import filters
-from rest_framework.generics import ListAPIView
+# from rest_framework import filters
+# from rest_framework.generics import ListAPIView
 
 # class SearchView(ListAPIView):
 # placeholder for the model
