@@ -16,7 +16,7 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST=('localhost:3000','jacob.propulsion-learn.ch',)
+CORS_ORIGIN_WHITELIST = ('localhost:3000', 'jacob.propulsion-learn.ch',)
 
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
