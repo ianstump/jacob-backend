@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'rest_framework',
     'project',
+    'project.base.apps.tags'
 ]
 
 MIDDLEWARE = [

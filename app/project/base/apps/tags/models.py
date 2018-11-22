@@ -29,8 +29,7 @@ class Document_tags(models.Model):
     pdf_documents = models.ManyToManyField(
         verbose_name='pdf_documents',
         related_name='document_tags',
-        to='base.Pdf_documents',
-        on_delete=models.CASCADE,
+        to='tags.Pdf_documents',
     )
 
 
@@ -46,13 +45,13 @@ class Highlighted_text(models.Model):
     document_tags = models.ForeignKey(
         verbose_name='document_tags',
         related_name='highlighted_text',
-        to='base.Document_tags',
+        to='tags.Document_tags',
         on_delete=models.CASCADE,
 
     )
     pdf_documents = models.ForeignKey(
         verbose_name='pdf_documents',
         related_name='highlighted_text',
-        to='base.Pdf_documents',
+        to='tags.Pdf_documents',
         on_delete=models.CASCADE
     )
