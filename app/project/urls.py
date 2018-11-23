@@ -9,8 +9,9 @@ mypatterns = [
     path('docs/', include_docs_urls(title='Jacob Rest API')),
     path('auth/', include('project.apps.authentication.urls')),
     path('search/', include('project.apps.search.urls')),
+    path('file/', include('project.apps.file_storing.urls')),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns = [
     path('backend/', include(mypatterns)),
