@@ -34,7 +34,8 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 # Create some folders
 RUN mkdir -p /app | \
     mkdir -p /media-files | \
-    mkdir -p /static-files
+    mkdir -p /static-files | \
+    mkdir -p /pdfs
 
 COPY ./app/requirements.yml /app/requirements.yml
 RUN /opt/conda/bin/conda env create -f /app/requirements.yml
@@ -47,6 +48,8 @@ COPY ./app /app
 
 COPY ./scripts/* /scripts/
 RUN chmod +x /scripts/*
+
+COPY ./pdfs /pdfs
 
 WORKDIR /app
 
