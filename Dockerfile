@@ -17,6 +17,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -qqy \
     libgif-dev \
     libxt-dev autoconf automake \
     libtool bzip2 libxml2-dev \
+    poppler-utils \
     libuninameslist-dev libspiro-dev python-dev libpango1.0-dev libcairo2-dev chrpath uuid-dev uthash-dev pdf2htmlex
 
 
