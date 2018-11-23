@@ -12,8 +12,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -qqy \
     cmake \
     autotools-dev \
     libjpeg-dev \
-    libtiff4-dev \
-    libpng12-dev \
+    libtiff5-dev \
+    libpng-dev \
     libgif-dev \
     libxt-dev autoconf automake \
     libtool bzip2 libxml2-dev \
