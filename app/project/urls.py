@@ -11,7 +11,7 @@ mypatterns = [
     path('search/', include('project.apps.search.urls')),
     path('file/', include('project.apps.file_storing.urls')),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
 
 urlpatterns = [
     path('backend/', include(mypatterns)),
