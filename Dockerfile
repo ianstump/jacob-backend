@@ -7,7 +7,19 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -qqy \
     bzip2 \
     graphviz \
     libssl-dev \
-    openssh-server
+    openssh-server \
+    git \
+    cmake \
+    autotools-dev \
+    libjpeg-dev \
+    libtiff5-dev \
+    libpng-dev \
+    libgif-dev \
+    libxt-dev autoconf automake \
+    libtool bzip2 libxml2-dev \
+    poppler-utils \
+    libuninameslist-dev libspiro-dev python-dev libpango1.0-dev libcairo2-dev chrpath uuid-dev uthash-dev pdf2htmlex
+
 
 RUN mkdir /var/run/sshd
 RUN echo 'root:screencast' | chpasswd
