@@ -21,9 +21,11 @@ services:
     volumes:
       - static-files:/static-files
       - media-files:/media-files
+      - pdfs:/pdfs
 
 volumes:
   database:
+  pdfs:
   media-files:
     external: true
   static-files:
