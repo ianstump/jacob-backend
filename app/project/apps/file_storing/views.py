@@ -1,3 +1,5 @@
+from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.parsers import MultiPartParser, FormParser, FileUploadParser
@@ -6,12 +8,10 @@ from rest_framework.response import Response
 
 
 class FileView(APIView):
-    parser_classes = (MultiPartParser, FormParser)
-
-    def post(self, request, *args, **kwargs):
-        file_serializer = FileSerializer(data=request.data)
-        if file_serializer.is_valid():
-            file_serializer.save()
-            return Response(file_serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def post(self, request, **kwargs):
+        myfile = request.FILES['filepond']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        file_name = f'/media-files/documents/{filename}'
+        print("filename", file_name)
+        return HttpResponse("Working upload")
