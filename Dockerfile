@@ -17,13 +17,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -qqy \
     libgif-dev \
     libxt-dev autoconf automake \
     libtool bzip2 libxml2-dev \
-    libuninameslist-dev libspiro-dev python-dev libpango1.0-dev libcairo2-dev chrpath uuid-dev uthash-dev
+    libuninameslist-dev libspiro-dev python-dev libpango1.0-dev libcairo2-dev chrpath uuid-dev uthash-dev pdf2htmlex
 
-RUN git clone https://github.com/coolwanglu/fontforge.git fontforge.git
-RUN cd fontforge.git && git checkout pdf2htmlEX && ./autogen.sh && ./configure && make V=1 && sudo make install
-RUN sudo apt-get install -qq libpoppler-glib-dev
-RUN git clone git://github.com/coolwanglu/pdf2htmlEX.git
-RUN cd pdf2htmlEX && cmake . && make && sudo make install
 
 RUN mkdir /var/run/sshd
 RUN echo 'root:screencast' | chpasswd
