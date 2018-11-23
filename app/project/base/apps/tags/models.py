@@ -34,7 +34,8 @@ class Document_tags(models.Model):
 
 
 class Pdf_documents(models.Model):
-    report = models.FileField(upload_to='reports')
+    report = models.FileField(upload_to='documents/', null=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
 
 
 class Highlighted_text(models.Model):
