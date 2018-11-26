@@ -6,6 +6,7 @@ from rest_framework.views import APIView
 import os
 from project.base.apps.tags.models import Pdf_documents
 
+
 class FileView(APIView):
     permission_classes = []
 
