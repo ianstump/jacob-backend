@@ -31,12 +31,10 @@ class FileView(APIView):
     #     if os.path.isfile(f'/media-files/documents/{myfile}'):
     #         os.system(f'pdf2htmlEX --zoom 1.3 /media-files/documents/{myfile} --dest-dir /htmls/')
     def convertingPDFtoText(self, myfile):
-        with open(f'/media-files/pdfs/{myfile}', "rb") as f:
-            pdf = pdftotext.PDF(f)
-            print("\n\n".join(pdf))
+        while not os.path.exists(f'/pdfs/{myfile}'):
+            time.sleep(1)
+        if os.path.isfile(f'/media-files/pdfs/{myfile}'):
+            with open(f'/media-files/pdfs/{myfile}', "rb") as f:
+                pdf = pdftotext.PDF(f)
+                print("\n\n".join(pdf))
 
-    # def convertingPDFtoHTML(self, myfile):
-    #    while not os.path.exists(f'/pdfs/documents/{myfile}'):
-    #        time.sleep(1)
-    #    if os.path.isfile(f'/pdfs/documents/{myfile}'):
-    #        os.system(f'pdf2htmlEX --zoom 1.3 /pdfs/documents/{myfile} --dest-dir /htmls/')
