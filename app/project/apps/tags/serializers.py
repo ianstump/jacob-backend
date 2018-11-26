@@ -7,4 +7,3 @@ class TagsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Document_tags
         fields = ['name', 'pdf_documents']
-
