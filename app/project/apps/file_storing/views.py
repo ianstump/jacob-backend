@@ -1,4 +1,5 @@
 # !/usr/bin/env python
+import time
 
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse
@@ -19,8 +20,11 @@ class FileView(APIView):
         # filename = fs.save(myfile.name, myfile)
         # file_name = f'/media-files/{filename}'
         instance = Pdf_documents(report=myfile)
-        instance.save()
-        success = subprocess.call(f'pdf2htmlEX --zoom 1.3 /backend/pdfs/{myfile}')
-        print(success)
+        print('instance', instance.save())
+        while not os.path.exists(f'/media-files/documents/{myfile}'):
+            time.sleep(1)
+        if os.path.isfile(f'/media-files/documents/{myfile}'):
+            os.system(f'pdf2htmlEX --zoom 1.3 /media-files/documents/{myfile}')
+        # print(success)
         # print("filename", file_name)
         return HttpResponse("Working upload")
