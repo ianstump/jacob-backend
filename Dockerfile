@@ -18,7 +18,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -qqy \
     libxt-dev autoconf automake \
     libtool bzip2 libxml2-dev \
     poppler-utils \
-    libuninameslist-dev libspiro-dev python-dev libpango1.0-dev libcairo2-dev chrpath uuid-dev uthash-dev pdf2htmlex
+    libuninameslist-dev libspiro-dev python-dev libpango1.0-dev libcairo2-dev chrpath uuid-dev uthash-dev pdf2htmlex \
+    build-essential libpoppler-cpp-dev pkg-config
 
 
 RUN mkdir /var/run/sshd

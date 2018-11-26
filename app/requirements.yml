@@ -17,4 +17,5 @@ dependencies:
     - django-cors-headers==2.2.0
     - coreapi==2.3.3
     - djangorestframework-simplejwt==3.2.3
-    - tika-app==1.5.0
+    - pdftotext==2.1.1
+
