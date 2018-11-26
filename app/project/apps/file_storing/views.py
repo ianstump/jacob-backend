@@ -30,8 +30,9 @@ class FileView(APIView):
     #     if os.path.isfile(f'/media-files/documents/{myfile}'):
     #         os.system(f'pdf2htmlEX --zoom 1.3 /media-files/documents/{myfile} --dest-dir /htmls/')
 
+
     def convertingPDFtoHTML(self, myfile):
-        while not os.path.exists(f'/pdfs/documents/{myfile}'):
+        while not os.path.exists(f'/pdfs/{myfile}'):
             time.sleep(1)
-        if os.path.isfile(f'/pdfs/documents/{myfile}'):
-            os.system(f'pdf2htmlEX --zoom 1.3 /pdfs/documents/{myfile} --dest-dir /htmls/')
+        if os.path.isfile(f'/pdfs/{myfile}'):
+            os.system(f'pdf2htmlEX --zoom 1.3 /pdfs/{myfile} --dest-dir /htmls/')
