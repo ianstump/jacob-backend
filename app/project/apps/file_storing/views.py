@@ -1,6 +1,6 @@
 # !/usr/bin/env python
 import time
-from tika import parser
+from tikapp import TikaApp
 
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse
@@ -31,8 +31,8 @@ class FileView(APIView):
     #     if os.path.isfile(f'/media-files/documents/{myfile}'):
     #         os.system(f'pdf2htmlEX --zoom 1.3 /media-files/documents/{myfile} --dest-dir /htmls/')
     def convertingPDFtoText(self, myfile):
-        parsed = parser.from_file(f'pdfs/documents/{myfile}')
-        print(parsed["content"])
+        tika_client = TikaApp(file_jar="/opt/tika/tika-app-1.18.jar")
+        tika_client.extract_only_content(f'/pdfs/documents/{myfile}')
 
     # def convertingPDFtoHTML(self, myfile):
     #    while not os.path.exists(f'/pdfs/documents/{myfile}'):
