@@ -17,3 +17,4 @@ dependencies:
     - django-cors-headers==2.2.0
     - coreapi==2.3.3
     - djangorestframework-simplejwt==3.2.3
+    - tika==1.19
