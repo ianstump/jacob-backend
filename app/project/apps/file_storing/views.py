@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 import os
 
 from project.base.apps.tags.models import Pdf_documents
-import subprocess
+
 
 
 class FileView(APIView):
@@ -21,10 +21,17 @@ class FileView(APIView):
         # file_name = f'/media-files/{filename}'
         instance = Pdf_documents(report=myfile)
         print('instance', instance.save())
-        while not os.path.exists(f'/media-files/documents/{myfile}'):
-            time.sleep(1)
-        if os.path.isfile(f'/media-files/documents/{myfile}'):
-            os.system(f'pdf2htmlEX --zoom 1.3 /media-files/documents/{myfile}')
-        # print(success)
-        # print("filename", file_name)
+        self.convertingPDFtoHTML(myfile)
         return HttpResponse("Working upload")
+
+    # def convertingPDFtoHTML(self, myfile):
+    #     while not os.path.exists(f'/media-files/documents/{myfile}'):
+    #         time.sleep(1)
+    #     if os.path.isfile(f'/media-files/documents/{myfile}'):
+    #         os.system(f'pdf2htmlEX --zoom 1.3 /media-files/documents/{myfile} --dest-dir /htmls/')
+
+    def convertingPDFtoHTML(self, myfile):
+        while not os.path.exists(f'/pdfs/documents/{myfile}'):
+            time.sleep(1)
+        if os.path.isfile(f'/pdfs/documents/{myfile}'):
+            os.system(f'pdf2htmlEX --zoom 1.3 /pdfs/documents/{myfile} --dest-dir /htmls/')
