@@ -34,7 +34,7 @@ class Document_tags(models.Model):
 
 
 class Pdf_documents(models.Model):
-    report = models.FileField(upload_to='media-files/', null=True)
+    report = models.FileField(upload_to='pdfs/', null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
 

@@ -1,4 +1,5 @@
 from django.urls import path
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 
 urlpatterns = [
@@ -7,3 +8,4 @@ urlpatterns = [
     path('token/verify/', TokenVerifyView.as_view(), name='token-verify'),
 
 ]
+urlpatterns += staticfiles_urlpatterns()

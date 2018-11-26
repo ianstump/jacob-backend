@@ -1,4 +1,3 @@
-
 import os
 import ast
 from datetime import timedelta
@@ -84,14 +83,14 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': "postgres",
-         'USER': "postgres",
-         'PASSWORD': "postgres",
-         'HOST': "database",
-         'PORT': 5432,
-     }
- }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': "postgres",
+        'USER': "postgres",
+        'PASSWORD': "postgres",
+        'HOST': "database",
+        'PORT': 5432,
+    }
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
