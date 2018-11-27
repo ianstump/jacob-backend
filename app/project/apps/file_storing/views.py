@@ -32,9 +32,10 @@ class FileView(APIView):
     #         os.system(f'pdf2htmlEX --zoom 1.3 /media-files/documents/{myfile} --dest-dir /htmls/')
     def convertingPDFtoText(self, myfile):
         while not os.path.exists(f'/pdfs/{myfile}'):
+            print(myfile)
             time.sleep(1)
-        if os.path.isfile(f'/media-files/pdfs/{myfile}'):
-            with open(f'/media-files/pdfs/{myfile}', "rb") as f:
+        if os.path.isfile(f'/pdfs/{myfile}'):
+            with open(f'/pdfs/{myfile}', "rb") as f:
                 pdf = pdftotext.PDF(f)
                 print("\n\n".join(pdf))
 
