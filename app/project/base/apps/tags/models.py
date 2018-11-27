@@ -3,6 +3,7 @@ import time
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+import pdftotext
 
 
 class Document_tags(models.Model):
@@ -45,9 +46,9 @@ class Document_tags(models.Model):
 class Pdf_documents(models.Model):
     report = models.FileField(upload_to='', null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
-    text_document = models.TextField(
-        verbose_name="text_document",
-        null=True)
+    text_document = models.TextField(verbose_name="text_document", null=True)
+    html_created = models.BooleanField(verbose_name='html_created', default=False)
+    text_created = models.BooleanField(verbose_name='html_created', default=False)
 
     def __str__(self):
         return str(self.report)
@@ -56,14 +57,27 @@ class Pdf_documents(models.Model):
 @receiver(post_save, sender=Pdf_documents)
 def convert_pdf_html(sender, **kwargs):
     instance = kwargs.get('instance')
-    convertingPDFtoHTML(instance.report)
+    if not instance.html_created:
+        convertingPDFtoHTML(instance.report)
+        instance.html_created = True
+        instance.save()
+    if not instance.text_created:
+        convertingPDFtoText(instance)
+        instance.save()
+
+
+def convertingPDFtoText(instance):
+    myfile = instance.report
+    with open(f'/pdfs/{myfile}', "rb") as f:
+        pdf = pdftotext.PDF(f)
+        complete_pdf = ("\n\n".join(pdf))
+        instance.text_document = complete_pdf
+        instance.text_created = True
+        instance.save()
 
 
 def convertingPDFtoHTML(myfile):
-    while not os.path.exists(f'/pdfs/{myfile}'):
-        time.sleep(1)
-    if os.path.isfile(f'/pdfs/{myfile}'):
-        os.system(f'pdf2htmlEX --zoom 1.3 /pdfs/{myfile} --dest-dir /htmls/')
+    os.system(f'pdf2htmlEX --zoom 1.3 /pdfs/{myfile} --dest-dir /htmls/')
 
 
 class Highlighted_text(models.Model):
