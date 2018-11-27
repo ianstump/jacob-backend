@@ -6,4 +6,4 @@ from project.base.apps.tags.models import Pdf_documents
 class FileSerializer(serializers.ModelSerializer):
     class Meta():
         model = Pdf_documents
-        fields = ('report', 'timestamp')
+        fields = ('report', 'timestamp', 'text_document')

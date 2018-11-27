@@ -5,7 +5,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -29,7 +28,9 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('selected_text', models.CharField(max_length=1000, verbose_name='file_name')),
-                ('document_tags', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='highlighted_text', to='tags.Document_tags', verbose_name='document_tags')),
+                ('document_tags',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='highlighted_text',
+                                   to='tags.Document_tags', verbose_name='document_tags')),
             ],
         ),
         migrations.CreateModel(
@@ -43,11 +44,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='highlighted_text',
             name='pdf_documents',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='highlighted_text', to='tags.Pdf_documents', verbose_name='pdf_documents'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='highlighted_text',
+                                    to='tags.Pdf_documents', verbose_name='pdf_documents'),
         ),
         migrations.AddField(
             model_name='document_tags',
             name='pdf_documents',
-            field=models.ManyToManyField(related_name='document_tags', to='tags.Pdf_documents', verbose_name='pdf_documents'),
+            field=models.ManyToManyField(related_name='document_tags', to='tags.Pdf_documents',
+                                         verbose_name='pdf_documents'),
         ),
     ]

@@ -6,9 +6,9 @@ from django.http import HttpResponse
 from rest_framework.views import APIView
 import os
 import pdftotext
-
 from project.base.apps.tags.models import Pdf_documents
 
+from project.apps.file_storing.serializer import FileSerializer
 
 
 class FileView(APIView):
@@ -37,5 +37,5 @@ class FileView(APIView):
         if os.path.isfile(f'/pdfs/{myfile}'):
             with open(f'/pdfs/{myfile}', "rb") as f:
                 pdf = pdftotext.PDF(f)
-                print("\n\n".join(pdf))
-
+                complete_pdf = ("\n\n".join(pdf))
+                Pdf_documents.objects.update(text_document=complete_pdf)
