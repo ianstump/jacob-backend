@@ -20,8 +20,8 @@ class FileView(APIView):
         fs = FileSystemStorage()
         # filename = fs.save(myfile.name, myfile)
         # file_name = f'/media-files/{filename}'
-        instance = Pdf_documents(report=myfile)
-        print('instance', instance.save())
+        # instance = Pdf_documents(report=myfile)
+        # print('instance', instance.save())
         self.convertingPDFtoText(myfile)
         return HttpResponse("Working upload")
 
@@ -32,10 +32,10 @@ class FileView(APIView):
     #         os.system(f'pdf2htmlEX --zoom 1.3 /media-files/documents/{myfile} --dest-dir /htmls/')
     def convertingPDFtoText(self, myfile):
         while not os.path.exists(f'/pdfs/{myfile}'):
-            print(myfile)
             time.sleep(1)
         if os.path.isfile(f'/pdfs/{myfile}'):
             with open(f'/pdfs/{myfile}', "rb") as f:
                 pdf = pdftotext.PDF(f)
                 complete_pdf = ("\n\n".join(pdf))
-                Pdf_documents.objects.update(text_document=complete_pdf)
+                instance = Pdf_documents(report=myfile, text_document=complete_pdf)
+                instance.save()
