@@ -5,7 +5,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('tags', '0001_initial'),
     ]
@@ -14,6 +13,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='highlighted_text',
             name='pdf_documents',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='highlighted_text', to='tags.Pdf_documents', verbose_name='pdf_documents'),
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE,
+                                    related_name='highlighted_text', to='tags.Pdf_documents',
+                                    verbose_name='pdf_documents'),
         ),
     ]

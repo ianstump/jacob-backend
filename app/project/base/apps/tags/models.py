@@ -45,6 +45,9 @@ class Document_tags(models.Model):
 class Pdf_documents(models.Model):
     report = models.FileField(upload_to='', null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
+    text_document = models.TextField(
+        verbose_name="text_document",
+        null=True)
 
     def __str__(self):
         return str(self.report)
