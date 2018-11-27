@@ -17,14 +17,6 @@ class FileView(APIView):
         instance.save()
         return HttpResponse("Working upload")
 
-    def convertingPDFtoHTML(self, myfile):
-        while not os.path.exists(f'/pdfs/{myfile}'):
-            time.sleep(1)
-        if os.path.isfile(f'/pdfs/{myfile}'):
-            os.system(f'pdf2htmlEX --zoom 1.3 /pdfs/{myfile} --dest-dir /htmls/')
-
-
-
 
 class GetPdfs(ListAPIView):
     permission_classes = []
@@ -36,4 +28,3 @@ class GetPdfs(ListAPIView):
         for param in params:
             indexes.append(params[param])
         return Pdf_documents.objects.filter(id__in=indexes)
-
