@@ -1,5 +1,5 @@
 from django.urls import path
-from project.apps.file_storing.views import FileView, GetPdfs
+from project.apps.upload.views import FileView, GetPdfs
 
 urlpatterns = [
     path('upload/', FileView.as_view(), name='storing_file'),
