@@ -1,8 +1,7 @@
 import os
 import time
-
 from django.db import models
-from django.db.models.signals import post_save, pre_save
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
@@ -52,7 +51,7 @@ class Pdf_documents(models.Model):
 
 
 @receiver(post_save, sender=Pdf_documents)
-def create_user_profile(sender, **kwargs):
+def convert_pdf_html(sender, **kwargs):
     instance = kwargs.get('instance')
     convertingPDFtoHTML(instance.report)
 

@@ -1,9 +1,6 @@
-# !/usr/bin/env python
-import time
 from django.http import HttpResponse
 from rest_framework.generics import ListAPIView
 from rest_framework.views import APIView
-import os
 from project.base.apps.tags.models import Pdf_documents
 from project.apps.file_storing.serializer import FileSerializer
 
