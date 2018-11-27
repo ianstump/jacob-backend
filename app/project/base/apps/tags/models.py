@@ -48,7 +48,7 @@ class Pdf_documents(models.Model):
 
 class Highlighted_text(models.Model):
     selected_text = models.CharField(
-        verbose_name='file_name',
+        verbose_name='selected_text',
         max_length=1000,
     )
     document_tags = models.ForeignKey(
