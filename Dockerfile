@@ -47,8 +47,6 @@ ENV PATH /opt/conda/envs/app/bin:$PATH
 RUN sed '$ a conda activate app' -i /root/.bashrc
 
 COPY ./app /app
-COPY ./pdfs /pdfs
-COPY ./htmls /htmls
 
 COPY ./scripts/* /scripts/
 RUN chmod +x /scripts/*
