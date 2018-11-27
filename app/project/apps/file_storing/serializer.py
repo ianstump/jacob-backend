@@ -7,3 +7,4 @@ class FileSerializer(serializers.ModelSerializer):
     class Meta():
         model = Pdf_documents
         fields = ('report', 'timestamp')
+
