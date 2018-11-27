@@ -10,6 +10,7 @@ mypatterns = [
     path('auth/', include('project.apps.authentication.urls')),
     path('search/', include('project.apps.search.urls')),
     path('file/', include('project.apps.file_storing.urls')),
+    path('tags/', include('project.apps.tags.urls')),
 
 ]
 

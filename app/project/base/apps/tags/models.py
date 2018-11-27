@@ -30,12 +30,20 @@ class Document_tags(models.Model):
         verbose_name='pdf_documents',
         related_name='document_tags',
         to='tags.Pdf_documents',
+        null=True,
+        blank=True
     )
+
+    def __str__(self):
+        return str(self.name)
 
 
 class Pdf_documents(models.Model):
     report = models.FileField(upload_to='', null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.report)
 
 
 class Highlighted_text(models.Model):
@@ -54,5 +62,10 @@ class Highlighted_text(models.Model):
         verbose_name='pdf_documents',
         related_name='highlighted_text',
         to='tags.Pdf_documents',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
     )
+
+    def __str__(self):
+        return str(self.selected_text)
