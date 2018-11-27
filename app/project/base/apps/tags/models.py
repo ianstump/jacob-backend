@@ -1,4 +1,9 @@
+import os
+import time
+
 from django.db import models
+from django.db.models.signals import post_save, pre_save
+from django.dispatch import receiver
 
 
 class Document_tags(models.Model):
@@ -39,12 +44,24 @@ class Document_tags(models.Model):
 
 
 class Pdf_documents(models.Model):
-    # report = models.FileField(upload_to='documents/', null=True)
     report = models.FileField(upload_to='', null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.report)
+
+
+@receiver(post_save, sender=Pdf_documents)
+def create_user_profile(sender, **kwargs):
+    instance = kwargs.get('instance')
+    convertingPDFtoHTML(instance.report)
+
+
+def convertingPDFtoHTML(myfile):
+    while not os.path.exists(f'/pdfs/{myfile}'):
+        time.sleep(1)
+    if os.path.isfile(f'/pdfs/{myfile}'):
+        os.system(f'pdf2htmlEX --zoom 1.3 /pdfs/{myfile} --dest-dir /htmls/')
 
 
 class Highlighted_text(models.Model):
