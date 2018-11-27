@@ -8,28 +8,22 @@ import os
 import pdftotext
 from project.base.apps.tags.models import Pdf_documents
 
-from project.apps.file_storing.serializer import FileSerializer
-
 
 class FileView(APIView):
     permission_classes = []
+
+    """the view is made for the upload"""
 
     def post(self, request, **kwargs):
         myfile = request.FILES['filepond']
         print("name of file", myfile)
         fs = FileSystemStorage()
-        # filename = fs.save(myfile.name, myfile)
-        # file_name = f'/media-files/{filename}'
-        # instance = Pdf_documents(report=myfile)
-        # print('instance', instance.save())
         self.convertingPDFtoText(myfile)
         return HttpResponse("Working upload")
 
-    # def convertingPDFtoHTML(self, myfile):
-    #     while not os.path.exists(f'/media-files/documents/{myfile}'):
-    #         time.sleep(1)
-    #     if os.path.isfile(f'/media-files/documents/{myfile}'):
-    #         os.system(f'pdf2htmlEX --zoom 1.3 /media-files/documents/{myfile} --dest-dir /htmls/')
+    """ the next function converts the pdf directly to text and saves it into the Pdf_documents model
+     with a relation to report """
+
     def convertingPDFtoText(self, myfile):
         while not os.path.exists(f'/pdfs/{myfile}'):
             time.sleep(1)
