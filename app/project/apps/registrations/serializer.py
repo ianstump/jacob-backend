@@ -95,3 +95,9 @@ class ValidationSerializer(RegistrationSerializer):
         user.set_password(validated_data.get('password'))
         user.save()
         return user
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'first_name']

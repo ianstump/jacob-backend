@@ -1,8 +1,10 @@
+from django.contrib.auth import get_user_model
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from .serializer import RegistrationSerializer, ValidationSerializer, UserSerializer
 
-from .serializer import RegistrationSerializer, ValidationSerializer
+User = get_user_model()
 
 
 class RegistrationView(APIView):
@@ -24,3 +26,8 @@ class ValidationView(APIView):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid(raise_exception=True):
             return Response({'detail': 'Account Created!'})
+
+
+class GetUserInfo(APIView):
+    def get(self, request):
+        return Response(UserSerializer(instance=request.user).data)
