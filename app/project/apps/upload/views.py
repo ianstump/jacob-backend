@@ -31,3 +31,14 @@ class GetPdfs(ListAPIView):
         for param in params:
             indexes.append(params[param])
         return PdfDocuments.objects.filter(id__in=indexes)
+
+
+class GetAllPdfs(ListAPIView):
+    """
+    View to get all pdf info.
+    """
+    permission_classes = []
+    serializer_class = FileSerializer
+
+    def get_queryset(self):
+        return PdfDocuments.objects.all()

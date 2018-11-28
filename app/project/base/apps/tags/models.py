@@ -71,7 +71,8 @@ def convertingPDFtoText(instance):
     with open(f'{settings.MEDIA_ROOT}/{myfile}', "rb") as f:
         pdf = pdftotext.PDF(f)
         complete_pdf = ("\n\n".join(pdf))
-        instance.text = complete_pdf
+        complete_pdf_no_ext_spaces = ' '.join(complete_pdf.split())
+        instance.text = complete_pdf_no_ext_spaces
         instance.text_created = True
         instance.save()
 
