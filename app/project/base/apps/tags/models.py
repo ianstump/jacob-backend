@@ -1,4 +1,6 @@
 import os
+
+from django.conf import settings
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -42,7 +44,7 @@ class DocumentTags(models.Model):
 
 
 class PdfDocuments(models.Model):
-    pdf = models.FileField(upload_to='', null=True)
+    pdf = models.FileField(upload_to='./pdfs', null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     text = models.TextField(verbose_name="text", null=True)
     html_created = models.BooleanField(verbose_name='html_created', default=False)
@@ -66,7 +68,7 @@ def convert_pdf_html(sender, **kwargs):
 
 def convertingPDFtoText(instance):
     myfile = instance.pdf
-    with open(f'/pdfs/{myfile}', "rb") as f:
+    with open(f'{settings.MEDIA_ROOT}/{myfile}', "rb") as f:
         pdf = pdftotext.PDF(f)
         complete_pdf = ("\n\n".join(pdf))
         instance.text = complete_pdf
@@ -75,7 +77,7 @@ def convertingPDFtoText(instance):
 
 
 def convertingPDFtoHTML(myfile):
-    os.system(f'pdf2htmlEX --zoom 1.3 /pdfs/{myfile} --dest-dir /htmls/')
+    os.system(f'pdf2htmlEX --zoom 1.3 {settings.MEDIA_ROOT}/{myfile} --dest-dir {settings.MEDIA_ROOT}/htmls/')
 
 
 class HighlightedText(models.Model):

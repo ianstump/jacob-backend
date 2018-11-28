@@ -22,8 +22,6 @@ services:
       - ./static-files:/static-files
       - ./app:/app
       - ./scripts:/scripts
-      - ./pdfs:/pdfs
-      - ./htmls:/htmls
 
     depends_on:
       - database

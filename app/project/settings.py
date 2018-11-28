@@ -127,8 +127,7 @@ LOGOUT_REDIRECT_URL = '/'
 STATIC_URL = '/static-files/'
 MEDIA_URL = '/media-files/'
 STATIC_ROOT = '/static-files'
-# MEDIA_ROOT = '/media-files'
-MEDIA_ROOT = '/pdfs'
+MEDIA_ROOT = '/media-files'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
