@@ -35,7 +35,7 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 # Create some folders
 RUN mkdir -p /app | \
     mkdir -p /media-files | \
-    mkdir -p /static-files | \
+    mkdir -p /static-files
 
 COPY ./app/requirements.yml /app/requirements.yml
 RUN /opt/conda/bin/conda env create -f /app/requirements.yml
