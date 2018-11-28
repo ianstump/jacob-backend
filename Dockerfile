@@ -37,8 +37,6 @@ RUN mkdir -p /app | \
     mkdir -p /media-files | \
     mkdir -p /static-files
 
-COPY ./media-files /media-files
-
 COPY ./app/requirements.yml /app/requirements.yml
 RUN /opt/conda/bin/conda env create -f /app/requirements.yml
 
