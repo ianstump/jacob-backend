@@ -32,6 +32,7 @@ class GetPdfs(ListAPIView):
             indexes.append(params[param])
         return PdfDocuments.objects.filter(id__in=indexes)
 
+
 class GetAllPdfs(ListAPIView):
     """
     View to get all pdf info.
@@ -41,4 +42,3 @@ class GetAllPdfs(ListAPIView):
 
     def get_queryset(self):
         return PdfDocuments.objects.all()
-
