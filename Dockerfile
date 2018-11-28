@@ -36,8 +36,6 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 RUN mkdir -p /app | \
     mkdir -p /media-files | \
     mkdir -p /static-files | \
-    mkdir -p /pdfs | \
-    mkdir -p /htmls
 
 COPY ./app/requirements.yml /app/requirements.yml
 RUN /opt/conda/bin/conda env create -f /app/requirements.yml
@@ -47,8 +45,6 @@ ENV PATH /opt/conda/envs/app/bin:$PATH
 RUN sed '$ a conda activate app' -i /root/.bashrc
 
 COPY ./app /app
-COPY ./pdfs /pdfs
-COPY ./htmls /htmls
 
 COPY ./scripts/* /scripts/
 RUN chmod +x /scripts/*
