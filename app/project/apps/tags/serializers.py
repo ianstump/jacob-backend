@@ -6,7 +6,7 @@ from project.base.apps.tags.models import DocumentTags, HighlightedText
 class TagsSerializer(serializers.ModelSerializer):
     class Meta:
         model = DocumentTags
-        fields = ['id', 'name', 'pdf_documents']
+        fields = ['id', 'name', 'pdf_documents', 'parent_tag', 'color']
 
 
 class HighlightedTextSerializer(serializers.ModelSerializer):

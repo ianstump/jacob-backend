@@ -28,6 +28,11 @@ class DocumentTags(models.Model):
         blank=True
     )
 
+    color = models.CharField(
+        verbose_name='color',
+        max_length=7
+    )
+
     def __str__(self):
         return str(self.name)
 
