@@ -11,30 +11,20 @@ class DocumentTags(models.Model):
         verbose_name='name',
         max_length=200,
     )
-    datapoint = models.CharField(
-        verbose_name='datapoint',
-        max_length=200,
-    )
-    field_type = models.CharField(
-        verbose_name='field_type',
-        max_length=200,
-    )
-    domain_value = models.CharField(
-        verbose_name='domain_value',
-        max_length=200,
-    )
-    description_gbr = models.TextField(
-        verbose_name='description_gbr',
 
-    )
-    description_FR = models.TextField(
-        verbose_name='description_fr',
-
-    )
     pdf_documents = models.ManyToManyField(
         verbose_name='pdf_documents',
         related_name='document_tags',
         to='tags.PdfDocuments',
+        blank=True
+    )
+
+    parent_tag = models.ForeignKey(
+        verbose_name='parent_tag',
+        related_name='children',
+        to='self',
+        on_delete=models.CASCADE,
+        null=True,
         blank=True
     )
 
