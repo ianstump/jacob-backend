@@ -11,6 +11,7 @@ mypatterns = [
     path('search/', include('project.apps.search.urls')),
     path('file/', include('project.apps.upload.urls')),
     path('tags/', include('project.apps.tags.urls')),
+    path('annotate/', include('project.apps.annotations.urls'))
 
 ]
 
