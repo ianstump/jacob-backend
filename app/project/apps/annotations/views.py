@@ -6,7 +6,7 @@ from project.apps.annotations.serializers import HighlightedTextSerializer
 
 class AnnotateText(APIView):
     """
-    annotated text that posts text, with the respective pdf and tag
+    Annotate text in a document
     """
 
     def post(self, request, **kwargs):
