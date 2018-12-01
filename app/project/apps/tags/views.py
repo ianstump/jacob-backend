@@ -20,6 +20,7 @@ class GetHighlightedTextOfTag(ListAPIView):
     def get_queryset(self):
         return HighlightedText.objects.filter(document_tags=self.kwargs['pk'])
 
+
 class GetHighlightedTextOfPdf(ListAPIView):
     """
     View to get the texts (Key Phrases/Highlighted texts) for a specific pdf.

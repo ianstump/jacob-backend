@@ -67,7 +67,7 @@ class GetAllPdfs(ListAPIView):
             match = text[index1:index2]
             end = text[index2:]
 
-            text = beginning + '<span style="background-color:' + highlight.document_tags.color + '">' + match + '</span>' + end
+            text = beginning + '<span style="background-color:' + highlight.document_tags.color + '">' + match \
+                   + '</span>' + end
 
         return text
-
