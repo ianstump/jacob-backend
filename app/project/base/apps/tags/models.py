@@ -77,9 +77,8 @@ def convertingPDFtoHTML(myfile):
 
 
 class HighlightedText(models.Model):
-    selected_text = models.CharField(
+    selected_text = models.TextField(
         verbose_name='selected_text',
-        max_length=1000,
     )
     document_tags = models.ForeignKey(
         verbose_name='document_tags',

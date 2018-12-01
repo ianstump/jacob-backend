@@ -59,6 +59,8 @@ class GetAllPdfs(ListAPIView):
         highlighted_texts = pdf.highlighted_text
         for highlight in list(highlighted_texts.all()):
             index1 = text.find(highlight.selected_text)
+            if index1 == -1:
+                continue
             index2 = index1 + len(highlight.selected_text)
 
             beginning = text[:index1]
