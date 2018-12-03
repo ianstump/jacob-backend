@@ -1,9 +1,4 @@
-import os
-from django.conf import settings
 from django.db import models
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-import pdftotext
 
 
 class DocumentTags(models.Model):
@@ -46,34 +41,6 @@ class PdfDocuments(models.Model):
 
     def __str__(self):
         return str(self.pdf)
-
-
-@receiver(post_save, sender=PdfDocuments)
-def convert_pdf_html(sender, **kwargs):
-    instance = kwargs.get('instance')
-    if not instance.html_created:
-        convertingPDFtoHTML(instance.pdf)
-        instance.html_created = True
-        instance.save()
-    if not instance.text_created:
-        convertingPDFtoText(instance)
-        instance.save()
-
-
-def convertingPDFtoText(instance):
-    myfile = instance.pdf
-    with open(f'{settings.MEDIA_ROOT}/{myfile}', "rb") as f:
-        pdf = pdftotext.PDF(f)
-        complete_pdf = ("\n\n".join(pdf))
-        # uncommented for formatting
-        # complete_pdf_no_ext_spaces = ' '.join(complete_pdf.split())
-        instance.text = complete_pdf
-        instance.text_created = True
-        instance.save()
-
-
-def convertingPDFtoHTML(myfile):
-    os.system(f'pdf2htmlEX --zoom 1.3 {settings.MEDIA_ROOT}/{myfile} --dest-dir {settings.MEDIA_ROOT}/htmls/')
 
 
 class HighlightedText(models.Model):
