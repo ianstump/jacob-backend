@@ -2,7 +2,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from .models import PdfDocuments
-from .helpers import converting_pdf_to_html, converting_pdf_to_text, convert_html_to_html_text
+from .helpers import converting_pdf_to_html, converting_pdf_to_text  # , convert_html_to_html_text
 
 
 @receiver(post_save, sender=PdfDocuments)
