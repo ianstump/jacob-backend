@@ -21,7 +21,6 @@ def converting_pdf_to_html(myfile):
 
 
 def convert_html_to_html_text(myfile):
-    div_html_text = ''
     style_html_text = ''
 
     with open(f'{settings.MEDIA_ROOT}/htmls/{str(myfile)[5:-4]}.html', "rb") as file:
@@ -29,7 +28,6 @@ def convert_html_to_html_text(myfile):
         soup = BeautifulSoup(data, 'html.parser')
         for style in soup.find_all('style'):
             style_html_text += str(style)
-        for div in soup.find_all('div'):
-            div_html_text += str(div)
-        full_text = style_html_text + div_html_text
+        div1 = soup.find("div", {"id": "page-container"})
+        full_text = style_html_text + str(div1)
     return full_text
