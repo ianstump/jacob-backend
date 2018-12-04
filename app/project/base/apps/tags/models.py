@@ -41,7 +41,6 @@ class PdfDocuments(models.Model):
     text_created = models.BooleanField(verbose_name='html_created', default=False)
     html_text_created = models.BooleanField(verbose_name='html_text_created', default=False)
 
-
     def __str__(self):
         return str(self.pdf)
 

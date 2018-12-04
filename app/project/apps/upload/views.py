@@ -71,7 +71,6 @@ class GetAllPdfs(ListAPIView):
 
         return text
 
-
     @staticmethod
     def tagHTML(pdf):
         text = pdf.html_text

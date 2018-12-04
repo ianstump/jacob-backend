@@ -20,4 +20,3 @@ def convert_pdf(sender, **kwargs):
     #     instance.html_text = text
     #     instance.html_text_created = True
     #     instance.save()
-
