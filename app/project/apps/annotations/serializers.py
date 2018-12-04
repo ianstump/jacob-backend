@@ -6,7 +6,8 @@ from project.base.apps.tags.models import HighlightedText
 class HighlightedTextSerializer(serializers.ModelSerializer):
     class Meta:
         model = HighlightedText
-        fields = ['selected_text', 'document_tags', 'pdf_documents']
+        fields = ['selected_text', 'document_tags', 'pdf_documents', 'all_doc_tagged', 'id']
+
 
     def create(self, validated_data):
         instance = super().create(validated_data)
