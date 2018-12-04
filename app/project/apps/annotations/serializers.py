@@ -8,7 +8,6 @@ class HighlightedTextSerializer(serializers.ModelSerializer):
         model = HighlightedText
         fields = ['selected_text', 'document_tags', 'pdf_documents', 'all_doc_tagged', 'id']
 
-
     def create(self, validated_data):
         instance = super().create(validated_data)
         tag_instance = validated_data['document_tags']
