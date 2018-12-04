@@ -49,6 +49,7 @@ class PdfDocuments(models.Model):
 class HighlightedText(models.Model):
     selected_text = models.TextField(
         verbose_name='selected_text',
+        blank=True,
     )
     document_tags = models.ForeignKey(
         verbose_name='document_tags',
@@ -64,6 +65,10 @@ class HighlightedText(models.Model):
         on_delete=models.CASCADE,
         null=True,
         blank=True
+    )
+    all_doc_tagged = models.BooleanField(
+        verbose_name='all_doc_tagged',
+        default=False
     )
 
     def __str__(self):
