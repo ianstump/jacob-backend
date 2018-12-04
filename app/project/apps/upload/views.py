@@ -67,6 +67,25 @@ class GetAllPdfs(ListAPIView):
             match = text[index1:index2]
             end = text[index2:]
 
-            text = beginning + '<span title="' + highlight.document_tags.name + '" style="background-color:' + highlight.document_tags.color + '">' + match + '</span>' + end
+            text = beginning + '<span class="tagclass" title="' + highlight.document_tags.name + '" style="background-color:' + highlight.document_tags.color + '">' + match + '</span>' + end
+
+        return text
+
+
+    @staticmethod
+    def tagHTML(pdf):
+        text = pdf.html_text
+        # highlighted_texts = pdf.highlighted_text
+        # for highlight in list(highlighted_texts.all()):
+        #     index1 = text.find(highlight.selected_text)
+        #     if index1 == -1:
+        #         continue
+        #     index2 = index1 + len(highlight.selected_text)
+        #
+        #     beginning = text[:index1]
+        #     match = text[index1:index2]
+        #     end = text[index2:]
+        #
+        #     text = beginning + '<span class="tagclass" title="' + highlight.document_tags.name + '" style="background-color:' + highlight.document_tags.color + '">' + match + '</span>' + end
 
         return text

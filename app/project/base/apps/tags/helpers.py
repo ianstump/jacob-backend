@@ -1,6 +1,6 @@
 import os
-
 import pdftotext
+from bs4 import BeautifulSoup
 from django.conf import settings
 
 
@@ -18,3 +18,18 @@ def converting_pdf_to_text(instance):
 
 def converting_pdf_to_html(myfile):
     os.system(f'pdf2htmlEX --zoom 1.3 {settings.MEDIA_ROOT}/{myfile} --dest-dir {settings.MEDIA_ROOT}/htmls/')
+
+
+def convert_html_to_html_text(myfile):
+    div_html_text = ''
+    style_html_text = ''
+
+    with open(f'{settings.MEDIA_ROOT}/htmls/{str(myfile)[5:-4]}.html', "rb") as file:
+        data = file.read()
+        soup = BeautifulSoup(data, 'html.parser')
+        for style in soup.find_all('style'):
+            style_html_text += str(style)
+        for div in soup.find_all('div'):
+            div_html_text += str(div)
+        full_text = style_html_text + div_html_text
+    return full_text

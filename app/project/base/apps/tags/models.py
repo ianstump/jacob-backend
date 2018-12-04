@@ -36,8 +36,11 @@ class PdfDocuments(models.Model):
     pdf = models.FileField(upload_to='./pdfs', null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     text = models.TextField(verbose_name="text", null=True)
+    html_text = models.TextField(verbose_name="html_text", null=True)
     html_created = models.BooleanField(verbose_name='html_created', default=False)
     text_created = models.BooleanField(verbose_name='html_created', default=False)
+    html_text_created = models.BooleanField(verbose_name='html_text_created', default=False)
+
 
     def __str__(self):
         return str(self.pdf)
