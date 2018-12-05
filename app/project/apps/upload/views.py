@@ -67,10 +67,11 @@ class GetAllPdfs(ListAPIView):
             match = text[index1:index2]
             end = text[index2:]
 
-            text = beginning + '<span class="tagclass" title="' + highlight.document_tags.name + '" style="background-color:' + highlight.document_tags.color + '">' + match + '</span>' + end
+            text = beginning + '<span class="tagclass" title="' + highlight.document_tags.name + \
+                   '" style="background-color:' + highlight.document_tags.color + '">' + \
+                   match + '</span>' + end
 
         return text
-
 
     @staticmethod
     def tagHTML(pdf):
