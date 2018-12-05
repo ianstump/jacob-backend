@@ -1,7 +1,6 @@
-# from django.urls import path
-
-# from .views import SearchView
+from django.urls import path
+from .views import SearchText
 
 urlpatterns = [
-    # path('', SearchView.as_view(), name='search'),
+    path('query/', SearchText.as_view(), name='search'),
 ]

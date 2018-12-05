@@ -47,6 +47,6 @@ volumes:
   database:
   static-files:
   media-files:
-   esdata1:
+  esdata1:
     driver: local
 
