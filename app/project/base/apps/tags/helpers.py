@@ -27,6 +27,7 @@ def convert_html_to_html_text(myfile):
         data = file.read()
         soup = BeautifulSoup(data, 'html.parser')
         for style in soup.find_all('style'):
+            # if str(style) containes #page-container -> remove
             style_html_text += str(style)
         div1 = soup.find("div", {"id": "page-container"})
         full_text = style_html_text + str(div1)
