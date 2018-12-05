@@ -2,7 +2,6 @@ from rest_framework.views import APIView
 from project.apps.search.serializer import PdfDocumentSerializer
 from project.base.apps.tags.documents import PdfFileDocument
 from rest_framework.response import Response
-from project.base.apps.tags.models import PdfDocuments
 
 
 class SearchText(APIView):
