@@ -19,5 +19,9 @@ class AnnotateText(APIView):
 
 
 class GetAllHighlights(ListAPIView):
+    """
+    Gets all the highlighted texts
+    """
+
     serializer_class = HighlightedTextSerializer
     queryset = HighlightedText.objects.all()
