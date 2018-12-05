@@ -19,4 +19,8 @@ dependencies:
   - djangorestframework-simplejwt==3.2.3
   - pdftotext==2.1.1
   - beautifulsoup4==4.6.3
+  - django-elasticsearch-dsl==0.5.1
+  - django-elasticsearch-dsl-drf==0.16.3
+
+
 
