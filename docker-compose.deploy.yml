@@ -17,6 +17,7 @@ services:
       - "9000:8000"
     depends_on:
       - database
+      - elasticsearch
     command: 'sh /scripts/run.sh'
     volumes:
       - static-files:/static-files
