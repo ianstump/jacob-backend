@@ -22,6 +22,21 @@ services:
       - static-files:/static-files
       - media-files:/media-files
 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.5.1
+    container_name: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
 
 volumes:
   database:
@@ -29,6 +44,8 @@ volumes:
     external: true
   static-files:
     external: true
+  esdata1:
+    driver: local
 
 networks:
   default:
