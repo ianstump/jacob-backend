@@ -76,7 +76,5 @@ class HighlightedText(models.Model):
         null=True
     )
 
-
-
     def __str__(self):
         return str(self.selected_text)

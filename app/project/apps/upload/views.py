@@ -84,7 +84,7 @@ class GetAllPdfs(ListAPIView):
             index1 = highlight.start_of_selection
             if index1 == -2:
                 index1 = text.find(highlight.selected_text)
-            if index1 == -1 or index1 == None:
+            if index1 == -1 or index1 is None:
                 continue
             index2 = index1 + len(highlight.selected_text)
 
