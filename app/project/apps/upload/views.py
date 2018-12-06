@@ -53,13 +53,38 @@ class GetAllPdfs(ListAPIView):
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
+    # @staticmethod
+    # def tagPdf(pdf):
+    #     text = pdf.text
+    #     highlighted_texts = pdf.highlighted_text
+    #     for highlight in list(highlighted_texts.all()):
+    #         index1 = text.find(highlight.selected_text)
+    #         if index1 == -1:
+    #             continue
+    #         index2 = index1 + len(highlight.selected_text)
+    #
+    #         beginning = text[:index1]
+    #         match = text[index1:index2]
+    #         end = text[index2:]
+    #
+    #         text = \
+    #             beginning + '<span class="tagclass" title="' + \
+    #             highlight.document_tags.name + \
+    #             '" style="background-color:' + \
+    #             highlight.document_tags.color + '">' + \
+    #             match + '</span>' + end
+    #
+    #     return text
+
     @staticmethod
     def tagPdf(pdf):
         text = pdf.text
         highlighted_texts = pdf.highlighted_text
-        for highlight in list(highlighted_texts.all()):
-            index1 = text.find(highlight.selected_text)
-            if index1 == -1:
+        for highlight in list(highlighted_texts.all().order_by('-start_of_selection')):
+            index1 = highlight.start_of_selection
+            if index1 == -2:
+                index1 = text.find(highlight.selected_text)
+            if index1 == -1 or index1 == None:
                 continue
             index2 = index1 + len(highlight.selected_text)
 

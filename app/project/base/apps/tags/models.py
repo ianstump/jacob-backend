@@ -70,5 +70,13 @@ class HighlightedText(models.Model):
         default=False
     )
 
+    start_of_selection = models.IntegerField(
+        verbose_name='start_of_selection',
+        blank=True,
+        null=True
+    )
+
+
+
     def __str__(self):
         return str(self.selected_text)
