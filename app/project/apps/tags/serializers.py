@@ -14,4 +14,4 @@ class HighlightedTextSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = HighlightedText
-        fields = ['selected_text', 'document_tags']
+        fields = ['selected_text', 'document_tags', 'pdf_documents', 'all_doc_tagged', 'id']

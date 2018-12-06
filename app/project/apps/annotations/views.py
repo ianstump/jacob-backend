@@ -16,12 +16,3 @@ class AnnotateText(APIView):
         if serializer.is_valid(raise_exception=True):
             text = serializer.save()
         return Response(HighlightedTextSerializer(text).data)
-
-
-class GetAllHighlights(ListAPIView):
-    """
-    Gets all the highlighted texts
-    """
-
-    serializer_class = HighlightedTextSerializer
-    queryset = HighlightedText.objects.all()

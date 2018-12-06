@@ -29,6 +29,7 @@ def convert_html_to_html_text(myfile):
         for style in soup.find_all('style'):
             # if str(style) containes #page-container -> remove
             style_html_text += str(style)
+        style_html_text += '<style>#page-container {background-color: #cccccc}</style>'
         div1 = soup.find("div", {"id": "page-container"})
         full_text = style_html_text + str(div1)
     return full_text
