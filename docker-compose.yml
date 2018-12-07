@@ -22,9 +22,9 @@ services:
       - ./static-files:/static-files
       - ./app:/app
       - ./scripts:/scripts
-
     depends_on:
       - database
+      - elasticsearch
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.5.1

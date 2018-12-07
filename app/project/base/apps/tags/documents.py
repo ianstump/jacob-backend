@@ -11,7 +11,7 @@ pdfDocument.settings(
 
 text_analyzer = analyzer(
     'text_analyzer',
-    tokenizer=tokenizer('trigram', 'nGram', min_gram=3, max_gram=3),
+    tokenizer=tokenizer('trigram', 'nGram', min_gram=4, max_gram=4),
     filter=["lowercase", "stop", "snowball"],
 )
 
