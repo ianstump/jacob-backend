@@ -10,7 +10,7 @@ services:
       - database:/var/lib/postgresql/data
 
   app:
-    image: registry.gitlab.propulsion-home.ch/full-stack/batch-2018-09/personal-projects/jacob-project/backend
+    image: registry.gitlab.propulsion-home.ch/full-stack/previous-batches/batch-2018-09/personal-projects/jacob-project/backend
     restart: always
     command: "/usr/sbin/sshd -D"
     env_file: dev.env

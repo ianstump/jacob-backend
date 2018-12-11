@@ -9,7 +9,7 @@ services:
       - database:/var/lib/postgresql/data
 
   app:
-    image: registry.gitlab.propulsion-home.ch/full-stack/batch-2018-09/personal-projects/jacob-project/backend:master
+    image: registry.gitlab.propulsion-home.ch/full-stack/previous-batches/batch-2018-09/personal-projects/jacob-project/backend:master
     restart: always
     env_file:
       - prod.env
@@ -38,6 +38,7 @@ services:
       - esdata1:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
+    restart: always
     depends_on:
       - database
 
